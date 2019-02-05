@@ -1,0 +1,18 @@
+[package]
+name = "git-lg"
+version = "0.1.0"
+authors = ["Henry Wallace <henry@henrywallace.io>"]
+edition = "2018"
+
+[[bin]]
+name = "git-lg"
+path = "src/main.rs"
+
+[dependencies]
+clap = "~2.32"
+failure = "~0.1"
+git2 = "~0.8"
+chrono = { version = "~0.4", features = ["serde"] }
+serde = "~1.0"
+serde_json = "~1.0"
+serde_derive = "~1.0"
