@@ -1,0 +1,12 @@
+language: rust
+rust:
+  - stable
+install:
+  - rustup component add rustfmt
+  - rustup component add clippy
+script:
+  # Fail build when code isn't formatted properly.
+  - cargo fmt -- --check
+  # Check tests, too, and fail on warnings.
+  - cargo clippy --all-targets -- -D warnings
+  - cargo test

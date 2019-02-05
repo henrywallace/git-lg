@@ -1,16 +1,17 @@
-#[macro_use] extern crate clap;
-extern crate failure;
+#[macro_use]
+extern crate clap;
 extern crate chrono;
+extern crate failure;
 extern crate serde;
 extern crate serde_json;
-#[macro_use] extern crate serde_derive;
+#[macro_use]
+extern crate serde_derive;
 
-use chrono::{NaiveDateTime};
+use chrono::NaiveDateTime;
 
 struct Config {}
 
-#[derive(Serialize, Deserialize)]
-#[derive(Debug)]
+#[derive(Serialize, Deserialize, Debug)]
 struct Commit {
     subject: String,
     author_name: String,
@@ -25,7 +26,7 @@ fn run(_config: &Config) -> Result<(), failure::Error> {
     let mut commits: Vec<Commit> = vec![];
     for oid in revwalk {
         let commit = repo.find_commit(oid?)?;
-        commits.push(Commit{
+        commits.push(Commit {
             subject: commit.summary().unwrap().to_owned(),
             author_name: commit.author().name().unwrap().to_owned(),
             author_date: NaiveDateTime::from_timestamp(commit.author().when().seconds(), 0),
@@ -35,7 +36,6 @@ fn run(_config: &Config) -> Result<(), failure::Error> {
         println!("{}", x);
     }
 
-
     Ok(())
 }
 
@@ -43,7 +43,7 @@ fn main() {
     let _args = app_from_crate!()
         .about("git log with structured output")
         .get_matches();
-    if let Err(e) = run(&Config{}) {
+    if let Err(e) = run(&Config {}) {
         println!("HELLO");
         println!("{:?}", e);
         ::std::process::exit(1);
