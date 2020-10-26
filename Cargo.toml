@@ -9,11 +9,11 @@ name = "git-lg"
 path = "src/main.rs"
 
 [dependencies]
-clap = "~2.32"
-failure = "~0.1"
-git2 = "~0.8"
-chrono = { version = "~0.4", features = ["serde"] }
-serde = "~1.0"
-serde_json = "~1.0"
-serde_derive = "~1.0"
-log = "~0.4"
+clap = "2.33.3"
+failure = "0.1.8"
+git2 = "0.13.12"
+chrono = { version = "0.4.19", features = ["serde"] }
+serde = "1.0.117"
+serde_json = "1.0.59"
+serde_derive = "1.0.117"
+log = "0.4.11"
